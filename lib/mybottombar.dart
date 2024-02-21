@@ -9,14 +9,18 @@ class MyBottomBar extends StatefulWidget {
   final Color? iconColor;
   final Color? labelColor;
 
-  const MyBottomBar({
+   MyBottomBar({
     Key? key,
     required this.items,
     required this.currentIndex,
     required this.onTap,
     this.iconColor = Colors.blue,
     this.labelColor = Colors.blue,
-  }) : super(key: key);
+  }) : super(key: key){
+    if (items.length > 7) {
+      throw ArgumentError('Number of items cannot exceed 7.');
+    }
+  }
 
   @override
   MyBottomBarState createState() => MyBottomBarState();
@@ -29,7 +33,7 @@ class MyBottomBarState extends State<MyBottomBar> {
       items: widget.items
           .map((item) => BottomNavigationBarItem(
         icon: Icon(item.icon),
-        label: item.label,
+        label: item.label?? " ",
       ))
           .toList(),
       currentIndex: widget.currentIndex,
