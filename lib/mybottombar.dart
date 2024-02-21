@@ -44,10 +44,10 @@ class MyBottomBarState extends State<MyBottomBar> {
 
 class NavBarItem {
   final IconData icon;
-  final String label;
+  final String ?label;
 
   NavBarItem({
     required this.icon,
-    required this.label,
+     this.label,
   });
 }
